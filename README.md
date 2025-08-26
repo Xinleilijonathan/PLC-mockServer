@@ -1,5 +1,7 @@
 # Modular PLC Sensor Simulator
 
+![Dashboard Demo](docs/dashboard-demo.gif)
+
 This project implements a **mock PLC server** as described in the requirements document.  
 It is designed to simulate configurable modules, each with exactly three sensors, producing real-time waveforms that can be consumed via HTTP and WebSocket APIs.
 

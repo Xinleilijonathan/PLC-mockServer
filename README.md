@@ -428,6 +428,6 @@ Approximate breakdown of the ~3 hours spent:
 
 ## License
 
-MIT License
+MIT License © 2025 Xinlei Li
 
 ```

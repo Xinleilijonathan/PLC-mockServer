@@ -1,0 +1,35 @@
+{
+  "name": "plc-server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon --watch src --exec \"node -r ts-node/register src/index.ts\"",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "demo": "node -r ts-node/register src/demo-client.ts",
+    "demo:history": "node -r ts-node/register src/demo-history.ts",
+    "demo:ads": "node -r ts-node/register src/demo-ads.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@types/sqlite3": "^3.1.11",
+    "ads-server": "^1.1.2",
+    "dayjs": "^1.11.13",
+    "express": "^5.1.0",
+    "sqlite3": "^5.1.7",
+    "ws": "^8.18.3",
+    "yaml": "^2.8.1",
+    "zod": "^4.1.3"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.3",
+    "@types/node": "^24.3.0",
+    "@types/ws": "^8.18.1",
+    "nodemon": "^3.1.10",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.2"
+  }
+}

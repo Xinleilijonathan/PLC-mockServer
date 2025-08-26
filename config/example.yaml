@@ -1,0 +1,31 @@
+server:
+  protocol: ws        # ws | ads
+  port: 8080
+  updateMs: 200       # default update period (milliseconds)
+
+modules:
+  - id: 1
+    updateMs: 150
+    sensors:
+      - name: Module1_Sensor1
+        type: sinusoidal
+        amplitude: 5
+        frequency: 0.1
+        phase: 0
+        dcOffset: 10
+        unit: "psi"
+      - name: Module1_Sensor2
+        type: noisy_sinusoidal
+        amplitude: 3
+        frequency: 0.2
+        phase: 1.57
+        dcOffset: 20
+        noiseStd: 0.3
+        unit: "°C"
+      - name: Module1_Sensor3
+        type: square_wave
+        amplitude: 2
+        frequency: 0.05
+        phase: 0
+        dcOffset: 5
+        unit: "V"

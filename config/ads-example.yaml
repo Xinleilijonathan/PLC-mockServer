@@ -1,0 +1,52 @@
+server:
+  protocol: ads
+  port: 48898
+  updateMs: 200
+  ads:
+    # Local ADS port (should be unique)
+    localAdsPort: 30012
+    # Local AMS Net ID (format: IP.subnet1.subnet2)
+    localAmsNetId: "192.168.1.100.1.1"
+    # ADS Router TCP port (standard is 48898)
+    routerTcpPort: 48898
+    # ADS Router address (localhost for standalone)
+    routerAddress: "localhost"
+    # Local TCP port (0 = automatic)
+    localTcpPort: 0
+    # Local address
+    localAddress: "localhost"
+    # Connection timeout in milliseconds
+    timeoutDelay: 2000
+    # Auto-reconnect on connection loss
+    autoReconnect: true
+    # Reconnection interval in milliseconds
+    reconnectInterval: 2000
+    # Hide console warnings
+    hideConsoleWarnings: false
+
+modules:
+  - id: 1
+    updateMs: 150
+    sensors:
+      - name: "PLC.Module1.Pressure"
+        type: sinusoidal
+        amplitude: 5
+        frequency: 0.1
+        phase: 0
+        dcOffset: 10
+        unit: "bar"
+      - name: "PLC.Module1.Temperature"
+        type: noisy_sinusoidal
+        amplitude: 3
+        frequency: 0.2
+        phase: 1.57
+        dcOffset: 20
+        noiseStd: 0.3
+        unit: "°C"
+      - name: "PLC.Module1.Voltage"
+        type: square_wave
+        amplitude: 2
+        frequency: 0.05
+        phase: 0
+        dcOffset: 5
+        unit: "V"

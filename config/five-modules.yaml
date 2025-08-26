@@ -1,0 +1,30 @@
+server: { protocol: ws, port: 8080, updateMs: 200 }
+modules:
+  - id: 1
+    sensors:
+      - { name: Module1_Sensor1, type: sinusoidal, amplitude: 3, frequency: 0.1, phase: 0, dcOffset: 1, unit: "psi" }
+      - { name: Module1_Sensor2, type: noisy_sinusoidal, amplitude: 2, frequency: 0.2, phase: 0, dcOffset: 0, noiseStd: 0.2, unit: "°C" }
+      - { name: Module1_Sensor3, type: square_wave, amplitude: 1, frequency: 0.05, phase: 0, dcOffset: 0, unit: "V" }
+  - id: 2
+    updateMs: 120
+    sensors:
+      - { name: Module2_Sensor1, type: sinusoidal, amplitude: 6, frequency: 0.08, phase: 0.3, dcOffset: 2, unit: "bar" }
+      - { name: Module2_Sensor2, type: noisy_sinusoidal, amplitude: 4, frequency: 0.12, phase: 0, dcOffset: 10, noiseStd: 0.4, unit: "°F" }
+      - { name: Module2_Sensor3, type: square_wave, amplitude: 2, frequency: 0.03, phase: 0, dcOffset: 5, unit: "A" }
+  - id: 3
+    updateMs: 180
+    sensors:
+      - { name: Module3_Sensor1, type: sinusoidal, amplitude: 4, frequency: 0.15, phase: 1.0, dcOffset: 3, unit: "kPa" }
+      - { name: Module3_Sensor2, type: noisy_sinusoidal, amplitude: 3, frequency: 0.18, phase: 0.5, dcOffset: 15, noiseStd: 0.25, unit: "°C" }
+      - { name: Module3_Sensor3, type: square_wave, amplitude: 1.5, frequency: 0.07, phase: 0, dcOffset: 2, unit: "V" }
+  - id: 4
+    sensors:
+      - { name: Module4_Sensor1, type: sinusoidal, amplitude: 7, frequency: 0.12, phase: 0.8, dcOffset: 4, unit: "bar" }
+      - { name: Module4_Sensor2, type: noisy_sinusoidal, amplitude: 5, frequency: 0.25, phase: 0, dcOffset: 25, noiseStd: 0.5, unit: "°F" }
+      - { name: Module4_Sensor3, type: square_wave, amplitude: 3, frequency: 0.04, phase: 0, dcOffset: 8, unit: "A" }
+  - id: 5
+    updateMs: 250
+    sensors:
+      - { name: Module5_Sensor1, type: sinusoidal, amplitude: 2, frequency: 0.06, phase: 0.2, dcOffset: 1.5, unit: "psi" }
+      - { name: Module5_Sensor2, type: noisy_sinusoidal, amplitude: 1.5, frequency: 0.14, phase: 1.2, dcOffset: 12, noiseStd: 0.15, unit: "°C" }
+      - { name: Module5_Sensor3, type: square_wave, amplitude: 0.8, frequency: 0.08, phase: 0, dcOffset: 1, unit: "V" }

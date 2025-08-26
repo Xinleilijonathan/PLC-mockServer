@@ -1,0 +1,13 @@
+server: { protocol: ws, port: 8080, updateMs: 200 }
+modules:
+  - id: 1
+    sensors:
+      - { name: Module1_Sensor1, type: sinusoidal, amplitude: 3, frequency: 0.1, phase: 0, dcOffset: 1 }
+      - { name: Module1_Sensor2, type: noisy_sinusoidal, amplitude: 2, frequency: 0.2, phase: 0, dcOffset: 0, noiseStd: 0.2 }
+      - { name: Module1_Sensor3, type: square_wave, amplitude: 1, frequency: 0.05, phase: 0, dcOffset: 0 }
+  - id: 2
+    updateMs: 120
+    sensors:
+      - { name: Module2_Sensor1, type: sinusoidal, amplitude: 6, frequency: 0.08, phase: 0.3, dcOffset: 2, unit: "bar" }
+      - { name: Module2_Sensor2, type: noisy_sinusoidal, amplitude: 4, frequency: 0.12, phase: 0, dcOffset: 10, noiseStd: 0.4 }
+      - { name: Module2_Sensor3, type: square_wave, amplitude: 2, frequency: 0.03, phase: 0, dcOffset: 5 }

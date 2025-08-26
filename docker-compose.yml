@@ -1,0 +1,73 @@
+version: '3.8'
+
+services:
+  plc-simulator:
+    build: .
+    container_name: plc-simulator
+    ports:
+      - "${PLC_PORT:-8080}:8080"
+    environment:
+      - NODE_ENV=${NODE_ENV:-production}
+      - PLC_CONFIG=${PLC_CONFIG:-config/example.yaml}
+    volumes:
+      # Mount custom config files if needed
+      - ./config:/app/config:ro
+      # Mount data volume for historical storage
+      - plc-data:/app/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:8080/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    networks:
+      - plc-network
+
+  # Optional: Add a reverse proxy for production
+  nginx:
+    image: nginx:alpine
+    container_name: plc-nginx
+    ports:
+      - "${NGINX_PORT:-80}:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - plc-simulator
+    restart: unless-stopped
+    networks:
+      - plc-network
+    profiles:
+      - production
+
+  # Example of using different configurations
+  # You can override the default service with different configurations
+  plc-two-modules:
+    extends:
+      service: plc-simulator
+    container_name: plc-two-modules
+    environment:
+      - PLC_CONFIG=config/two-modules.yaml
+    ports:
+      - "8081:8080"
+    profiles:
+      - multi-config
+
+  plc-five-modules:
+    extends:
+      service: plc-simulator
+    container_name: plc-five-modules
+    environment:
+      - PLC_CONFIG=config/five-modules.yaml
+    ports:
+      - "8082:8080"
+    profiles:
+      - multi-config
+
+networks:
+  plc-network:
+    driver: bridge
+
+volumes:
+  plc-data:
+    driver: local
